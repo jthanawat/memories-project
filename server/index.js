@@ -2,14 +2,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-
+import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-
+dotenv.config();
 const app = express();
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
@@ -18,8 +14,7 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 
-const CONNECTION_URL =
-  'mongodb+srv://klathnw:13081308@cluster0.xopql.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const CONNECTION_URL = `mongodb+srv://klathnw:${process.env.PASSWORD_KEY}@cluster0.xopql.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const PORT = process.env.PORT || 5000;
 
 mongoose
