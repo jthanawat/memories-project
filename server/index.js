@@ -14,7 +14,10 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 
-// const CONNECTION_URL = `mongodb+srv://klathnw:${process.env.PASSWORD_KEY}@cluster0.xopql.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+app.get('/', (req, res) => {
+  res.send('Hello to Memories API');
+});
+
 const PORT = process.env.PORT || 5000;
 
 mongoose
